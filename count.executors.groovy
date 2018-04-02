@@ -5,7 +5,7 @@ println()
 
 // Jenkins Master and slaves
 def regularSlaves = Jenkins.instance.computers.grep{
-  it.online && it.displayName != "master"
+  it.online && it.displayName.contains("ci")
 }
 int regularSlaveExecutorCount = regularSlaves.inject(0, {a, c -> a + c.numExecutors})
 
